@@ -1,11 +1,12 @@
 "use server";
 
+import API_URL from "@/constants/api-url";
 import { revalidatePath } from "next/cache";
 
 export default async function DeleteAction(_, formData) {
   const id = formData.get("id");
 
-  await fetch("https://v1.appbackend.io/v1/rows/dtpXI4zjD1w3", {
+  await fetch(API_URL, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

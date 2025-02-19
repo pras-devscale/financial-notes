@@ -1,8 +1,9 @@
+import API_URL from "@/constants/api-url";
 import FormDelete from "./form-delete";
 import FormUpdate from "./form-update";
 
 export default async function FormRead() {
-  const res = await fetch("https://v1.appbackend.io/v1/rows/dtpXI4zjD1w3");
+  const res = await fetch(API_URL);
   const { data } = await res.json();
 
   const allDebitData = data

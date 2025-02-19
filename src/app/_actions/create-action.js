@@ -1,5 +1,6 @@
 "use server";
 
+import API_URL from "@/constants/api-url";
 import { revalidatePath } from "next/cache";
 
 export default async function CreateAction(_, formData) {
@@ -7,7 +8,7 @@ export default async function CreateAction(_, formData) {
   const amount = Number(formData.get("amount"));
   const category = formData.get("category");
 
-  await fetch("https://v1.appbackend.io/v1/rows/dtpXI4zjD1w3", {
+  await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
