@@ -1,6 +1,14 @@
 import API_URL from "@/constants/api-url";
 import FormDelete from "./form-delete";
 import FormUpdate from "./form-update";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableColumn,
+  TableRow,
+  TableCell,
+} from "@heroui/table";
 
 export default async function FormRead() {
   const res = await fetch(API_URL);
@@ -21,33 +29,50 @@ export default async function FormRead() {
       <h1 className="text-2xl font-bold mb-4">List of Notes</h1>
       <div>
         {data.map((item) => (
-          <div
-            key={item.id}
-            className="grid grid-cols-4 border border-gray-200 rounded items-center"
-          >
-            <h2 className="font-semibold text-sm p-2">{item.title}</h2>
-            <p className="text-sm text-gray-500 border-l p-4">
-              Rp. {item.amount}
-            </p>
-            {item.category === "Debit" ? (
-              <p className="text-sm text-green-600 border-l p-4">
-                {item.category}
+          <>
+            {/* <Table>
+              <TableHeader>
+                <TableColumn>NAME</TableColumn>
+                <TableColumn>ROLE</TableColumn>
+                <TableColumn>STATUS</TableColumn>
+              </TableHeader>
+              <TableBody>
+                <TableRow key={item.id}>
+                  <TableCell>{item.title}</TableCell>
+                  <TableCell>Rp. {item.amount}</TableCell>
+                  <TableCell>{item.category}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table> */}
+
+            <div
+              key={item.id}
+              className="grid grid-cols-4 border border-gray-200 rounded items-center"
+            >
+              <h2 className="font-semibold text-sm p-2">{item.title}</h2>
+              <p className="text-sm text-gray-500 border-l p-4">
+                Rp. {item.amount}
               </p>
-            ) : (
-              <p className="text-sm text-red-600 border-l p-4">
-                {item.category}
-              </p>
-            )}
-            <div className="flex justify-end items-center p-2 space-x-2">
-              <FormDelete id={item._id} />
-              <FormUpdate
-                title={item.title}
-                amount={item.amount}
-                category={item.category}
-                id={item._id}
-              />
+              {item.category === "Debit" ? (
+                <p className="text-sm text-green-600 border-l p-4">
+                  {item.category}
+                </p>
+              ) : (
+                <p className="text-sm text-red-600 border-l p-4">
+                  {item.category}
+                </p>
+              )}
+              <div className="flex justify-end items-center p-2 space-x-2">
+                <FormDelete id={item._id} className="z-0" />
+                <FormUpdate
+                  title={item.title}
+                  amount={item.amount}
+                  category={item.category}
+                  id={item._id}
+                />
+              </div>
             </div>
-          </div>
+          </>
         ))}
       </div>
 

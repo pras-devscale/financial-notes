@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useActionState } from "react";
 import UpdateAction from "../_actions/update-action";
+import { Button } from "@heroui/react";
+import { Input } from "@heroui/react";
 
 export default function FormUpdate({ title, amount, category, id }) {
   const [state, formAction, pending] = useActionState(UpdateAction, null);
@@ -25,8 +27,8 @@ export default function FormUpdate({ title, amount, category, id }) {
               className="space-y-2"
             >
               <input type="text" name="id" defaultValue={id} hidden />
-              <input type="text" name="title" defaultValue={title} />
-              <input type="number" name="amount" defaultValue={amount} />
+              <Input type="text" name="title" defaultValue={title} />
+              <Input type="number" name="amount" defaultValue={amount} />
               <select name="category" id="" defaultValue={category}>
                 <option value="Credit">Credit</option>
                 <option value="Debit">Debit</option>
