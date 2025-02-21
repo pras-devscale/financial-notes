@@ -3,7 +3,7 @@ import FormRead from "./_components/form-read";
 
 export default function Home() {
   return (
-    <div className="max-w-xl mx-auto space-y-8">
+    <div className="max-w-xl mx-auto space-y-8 mt-20">
       <FormCreate />
       <FormRead />
     </div>
